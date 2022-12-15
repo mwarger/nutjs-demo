@@ -27,28 +27,28 @@ async function main() {
   // need to know more about robotjs currently does to know if this is comparable
 
   // find main.ts, click title bar to activate window, and restart the TS server
-  // await performActionOnWindow(windows, 'main.ts', async (window) => {
-  //   const region = await window.region;
-  //   await mouse.setPosition({ x: region.left + 200, y: region.top + 10 });
-  //   await mouse.leftClick();
-
-  //   await keyboard.pressKey(Key.LeftSuper, Key.LeftShift, Key.P);
-  //   await keyboard.releaseKey(Key.LeftSuper, Key.LeftShift, Key.P);
-  //   await keyboard.type('restart ts');
-  //   await keyboard.pressKey(Key.Enter);
-  // });
-
-  // this currently does not "await" correctly
-  // need to figure out how to do things in sequence if necessary
-  // find terminal, click title bar to activate window, and clear the terminal
-  await performActionOnWindow(windows, 'figterm', async (window) => {
+  await performActionOnWindow(windows, 'main.ts', async (window) => {
     const region = await window.region;
     await mouse.setPosition({ x: region.left + 200, y: region.top + 10 });
     await mouse.leftClick();
 
-    await keyboard.type('clear');
+    await keyboard.pressKey(Key.LeftSuper, Key.LeftShift, Key.P);
+    await keyboard.releaseKey(Key.LeftSuper, Key.LeftShift, Key.P);
+    await keyboard.type('restart ts');
     await keyboard.pressKey(Key.Enter);
   });
+
+  // this currently does not "await" correctly
+  // need to figure out how to do things in sequence if necessary
+  // find terminal, click title bar to activate window, and clear the terminal
+  // await performActionOnWindow(windows, 'figterm', async (window) => {
+  //   const region = await window.region;
+  //   await mouse.setPosition({ x: region.left + 200, y: region.top + 10 });
+  //   await mouse.leftClick();
+
+  //   await keyboard.type('clear');
+  //   await keyboard.pressKey(Key.Enter);
+  // });
 }
 
 main();
