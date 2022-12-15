@@ -46,7 +46,7 @@ async function main() {
     await mouse.setPosition({ x: region.left + 200, y: region.top + 10 });
     await mouse.leftClick();
 
-    await keyboard.type('so is this - hello from nutjs');
+    await keyboard.type('clear');
     await keyboard.pressKey(Key.Enter);
   });
 }
